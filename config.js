@@ -1,5 +1,6 @@
 module.exports = {
   targetPath: './tmp',
   repoPath: 'https://github.com/tf3/vaccha.git',
-  contentPath: './tmp/content'
+  contentPath: './tmp/content',
+  baseURL: 'http://thomasfoerster.ca'
 };
