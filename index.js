@@ -4,7 +4,7 @@ const clone = util.promisify(require('git-clone'));
 
 const targetPath = './tmp';
 const repoPath = 'https://github.com/tf3/vaccha.git';
-contentPath = targetPath + '/content';
+const contentPath = targetPath + '/content';
 
 const lineStartsWithKey = (line, key) => (
   line.slice(0, key.length + 2) === `${key}: `
@@ -54,7 +54,7 @@ const handleCloneSuccess = () => {
 
 const formatDate = date => date.toISOString().slice(0, 10);
 
-createHTML = ({ title, date, fileName }) => {
+const createHTML = ({ title, date, fileName }) => {
   const baseURL = 'http://thomasfoerster.ca';
   const today = new Date();
   const postUrl = `${baseURL}/${fileName.slice(0, -3)}` //remove the ".md" extension
@@ -62,9 +62,8 @@ createHTML = ({ title, date, fileName }) => {
   return `<p>hey<p><a href="${postUrl}">${title}</a> (${formatDate(date)}) [${formatDate(today)}]`;
 }
 
-console.log('Cloning...');
 clone(repoPath, targetPath)
-  .then(() => handleCloneSuccess())
+  .then(handleCloneSuccess)
   .catch(console.error);
 
 // handleCloneSuccess();
