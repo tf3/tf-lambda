@@ -6,13 +6,11 @@ const unzipFile = require('./unzipFile');
 const getMetadataOfNewestPost = require('./getMetadataOfNewestPost');
 const createHTMLFromMetadata = require('./createHTMLFromMetadata');
 const writeHTMLToS3Bucket = require('./writeHTMLToS3Bucket');
+const handleError = require('./handleError');
 
-exports.handler = (event, context) => {
-  console.log('Event:', event);
-
+exports.handler = async (event, context) => {
   if (!signatureIsValid(event)) {
-    console.log('Invalid signature');
-    return 'Invalid signature';
+    return handleError('Invalid signature');
   }
 
   return fetch(repoPath)
@@ -21,6 +19,5 @@ exports.handler = (event, context) => {
     .then(getMetadataOfNewestPost)
     .then(createHTMLFromMetadata)
     .then(writeHTMLToS3Bucket)
-    .then(res => { console.log(res); return res; })
-    .catch(err => { console.error(err); throw err; })
+    .catch(handleError)
 };
