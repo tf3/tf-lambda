@@ -22,25 +22,32 @@ const getDateFromPost = post => {
 
 const getTitleFromPost = post => getValueFromPost(post, 'title');
 
-// getMetadataOfAllPosts
-// getMetadataOfAllPosts
-// sortPostMetadata
-
-const getMetadataOfNewestPost = () => {
+const getContentsOfAllPosts = () => {
   const postFileNames = readdirSync(contentPath);
-  const posts = postFileNames.map(fileName => ({
+
+  return postFileNames.map(fileName => ({
     content: readFileSync(`${contentPath}/${fileName}`),
     fileName
   }));
+};
 
-  const postMetadata = posts.map(({content, fileName}) => ({
+const getMetadataOfAllPosts = () => {
+  const posts = getContentsOfAllPosts();
+
+  return posts.map(( {content, fileName }) => ({
     title: getTitleFromPost(content),
     date: getDateFromPost(content),
     fileName
   }));
+};
 
-  const filteredMetadata = postMetadata.filter(({ date }) => Boolean(date));
-  const sortedAndFilteredMetadata = filteredMetadata.sort((p1, p2) => p2.date - p1.date);
+const getPostDateDifference = (p1, p2) => p2.date - p1.date;
+
+const getMetadataOfNewestPost = () => {
+  const metadataOfAllPosts = getMetadataOfAllPosts();
+  const filteredMetadata = metadataOfAllPosts.filter(({ date }) => Boolean(date));
+  const sortedAndFilteredMetadata = filteredMetadata.sort(getPostDateDifference);
+
   return sortedAndFilteredMetadata[0];
 };
 

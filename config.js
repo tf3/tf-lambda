@@ -8,5 +8,5 @@ module.exports = {
   contentPath: '/tmp/vaccha-master/content', // path to the blog's contents
   blogUrl: 'https://vaccha.com',
   bucketName: 'alpha-lambda-01',
-  targetFileName: 'index-01.html' // name of bucket file that will be created or updated
+  targetFileName: 'index-02.html' // name of bucket file that will be created or updated
 };
