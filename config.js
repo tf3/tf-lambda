@@ -7,6 +7,6 @@ module.exports = {
   zipDownloadPath: '/tmp/repo.zip', // where the zip file will be downloaded to
   contentPath: '/tmp/vaccha-master/content', // path to the extracted blog's contents
   blogUrl: 'https://vaccha.com',
-  bucketName: 'alpha-lambda-01',
-  targetFileName: 'index-02.html' // name of bucket file that will be created or updated
+  bucketName: 'thomasfoerster.ca',
+  targetFileName: 'index.html' // name of bucket file that will be created or updated
 };
