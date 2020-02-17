@@ -1,5 +1,5 @@
 const { readFileSync, readdirSync } = require('fs');
-const { contentPath } = require('./config');
+const { contentPath } = require('../config');
 
 const lineStartsWithKey = (line, key) => (
   line.slice(0, key.length + 2) === `${key}: `
@@ -21,6 +21,10 @@ const getDateFromPost = post => {
 };
 
 const getTitleFromPost = post => getValueFromPost(post, 'title');
+
+// getMetadataOfAllPosts
+// getMetadataOfAllPosts
+// sortPostMetadata
 
 const getMetadataOfNewestPost = () => {
   const postFileNames = readdirSync(contentPath);

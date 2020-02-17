@@ -1,14 +1,16 @@
 const fetch = require('node-fetch');
-const signatureIsValid = require('./signatureIsValid');
 const { repoPath } = require('./config');
-const saveResult = require('./saveResult');
-const unzipFile = require('./unzipFile');
-const getMetadataOfNewestPost = require('./getMetadataOfNewestPost');
-const createHTMLFromMetadata = require('./createHTMLFromMetadata');
-const writeHTMLToS3Bucket = require('./writeHTMLToS3Bucket');
-const handleError = require('./handleError');
+const {
+  createHTMLFromMetadata,
+  getMetadataOfNewestPost,
+  handleError,
+  saveResult,
+  signatureIsValid,
+  unzipFile,
+  writeHTMLToS3Bucket
+} = require('./utils');
 
-exports.handler = async (event, context) => {
+exports.handler = async event => {
   if (!signatureIsValid(event)) {
     return handleError('Invalid signature');
   }

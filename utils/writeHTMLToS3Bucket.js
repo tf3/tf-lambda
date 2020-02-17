@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-const { bucketName, targetFileName } = require('./config');
+const { bucketName, targetFileName } = require('../config');
 
 const S3 = new AWS.S3();
 

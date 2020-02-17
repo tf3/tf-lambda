@@ -1,4 +1,4 @@
-const { baseURL } = require('./config');
+const { baseURL } = require('../config');
 
 const formatDate = date => date.toISOString().slice(0, 10);
 

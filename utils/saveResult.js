@@ -1,5 +1,5 @@
 const { createWriteStream } = require('fs');
-const { zipDownloadPath } = require('./config');
+const { zipDownloadPath } = require('../config');
 
 const saveResult = res => (
   new Promise((resolve, reject) => {
