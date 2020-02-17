@@ -4,6 +4,7 @@ const {
   createHTMLFromMetadata,
   getMetadataOfNewestPost,
   handleError,
+  handleWriteSuccess,
   saveResult,
   signatureIsValid,
   unzipFile,
@@ -12,7 +13,7 @@ const {
 
 exports.handler = async event => {
   if (!signatureIsValid(event)) {
-    return handleError('Invalid signature');
+    return handleError(new Error('Invalid signature'), 403);
   }
 
   return fetch(repoPath)
@@ -21,5 +22,6 @@ exports.handler = async event => {
     .then(getMetadataOfNewestPost)
     .then(createHTMLFromMetadata)
     .then(writeHTMLToS3Bucket)
+    .then(handleWriteSuccess)
     .catch(handleError)
 };
