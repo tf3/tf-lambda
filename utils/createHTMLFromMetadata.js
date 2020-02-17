@@ -1,10 +1,10 @@
-const { baseURL } = require('../config');
+const { blogUrl } = require('../config');
 
 const formatDate = date => date.toISOString().slice(0, 10);
 
 const createHTMLFromMetadata = ({ title, fileName }) => {
   const today = new Date();
-  const postUrl = `${baseURL}/${fileName.slice(0, -3)}/` // remove the ".md" extension
+  const postUrl = `${blogUrl}/${fileName.slice(0, -3)}/` // remove the ".md" extension
 
   return `
 <!DOCTYPE html>
