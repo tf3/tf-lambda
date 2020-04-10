@@ -47,7 +47,7 @@ const createHTMLFromMetadata = ({ title, fileName }) => {
 
         <section class="about">
             <div class="container">
-                <p>I am a software developer at <a href="https://myplanet.com/">Myplanet</a>. Lately I have been working extensively with <a href="https://facebook.github.io/react-native/">React Native</a>.</p>
+                <p>I am a software developer at <a href="https://myplanet.com/">Myplanet</a>.</p>
                 <p>In 2019 I received a Ph.D. in philosophy from <a href="https://cornell.edu">Cornell
                     University</a>, where I did <a href="https://philpeople.org/profiles/thomas-foerster">work</a>
                     in philosophy of mind and ethics.</p>
